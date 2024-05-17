@@ -75,8 +75,18 @@ document.addEventListener('DOMContentLoaded', () => {
 +---------------------------+    +-------------------------+
   `;
 
-  function displayAsciiArt(asciiArt) {
-    terminal.textContent = asciiArt;
+  function displayAsciiArt(text, delay = 50) {
+    terminal.textContent = '';
+    let index = 0;
+
+    function writeChar() {
+      if (index < text.length) {
+        terminal.textContent += text[index++];
+        setTimeout(writeChar, delay);
+      }
+    }
+
+    writeChar();
   }
 
   displayAsciiArt(asciiArt1);
