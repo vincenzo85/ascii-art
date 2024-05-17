@@ -1,15 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const Terminal = window.Terminal.Terminal;
-  const FitAddon = window.FitAddon.FitAddon;
+  const terminal = document.getElementById('terminal');
 
-  const terminal = new Terminal();
-  const fitAddon = new FitAddon();
-  terminal.loadAddon(fitAddon);
-
-  terminal.open(document.getElementById('terminal'));
-  fitAddon.fit();
-
-  const asciiArt = `
+  const asciiArt1 = `
            +-----------------------------+
            | Apprendimento a lungo termine|
            +---------------+-------------+
@@ -46,15 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
 +---------------------------+    +-------------------------+
   `;
 
-  function displayAsciiArt() {
-    terminal.clear();
-    terminal.write(asciiArt);
-  }
-
-  displayAsciiArt();
-
-  setTimeout(() => {
-    const updatedAsciiArt = `
+  const asciiArt2 = `
            +-----------------------------+
            | Updated Learning Path       |
            +---------------+-------------+
@@ -89,8 +73,15 @@ document.addEventListener('DOMContentLoaded', () => {
 | Practical Application      |    | Teaching Others          |
 | (Learning by Doing)        |    |                         |
 +---------------------------+    +-------------------------+
-    `;
-    terminal.clear();
-    terminal.write(updatedAsciiArt);
+  `;
+
+  function displayAsciiArt(asciiArt) {
+    terminal.textContent = asciiArt;
+  }
+
+  displayAsciiArt(asciiArt1);
+
+  setTimeout(() => {
+    displayAsciiArt(asciiArt2);
   }, 5000);
 });
