@@ -3,9 +3,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const speedControl = document.getElementById('speed-control');
 
   const asciiArt1 = `
-           +-----------------------------+
-           | Apprendimento a lungo termine|
-           +---------------+-------------+
+           +--------------------------------+
+           | Apprendimento a lungo termine  |
+           +---------------+----------------+
                            |
               +------------+------------+
               |                         |
@@ -28,15 +28,15 @@ document.addEventListener('DOMContentLoaded', () => {
 |                           |    |                         |
 +---------------------------+    +-------------------------+
               |                         |
-+-------------+-------------+    +------+-----------+------+
++-------------+-------------+    +------+-----------+--------+
 | Studio attivo con domande  |    | Collaborazione con       |
 | (self-explanation)         |    | compagni di studio       |
-+---------------------------+    +-------------------------+
++---------------------------+    +---------------------------+
               |                         |
-+-------------+-------------+    +------+-----------+------+
-| Applicazione pratica      |    | Insegnare ad altri       |
-| (learning by doing)       |    | (teaching)               |
-+---------------------------+    +-------------------------+
++-------------+-------------+    +------+-----------+--------+
+| Applicazione pratica      |    | Insegnare ad altri        |
+| (learning by doing)       |    | (teaching)                |
++---------------------------+    +---------------------------+
   `;
 
   function typeWriterEffect(text, delay) {
