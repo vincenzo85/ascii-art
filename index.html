@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ASCII Art in Terminal</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xterm/css/xterm.css" />
+  <title>ASCII Art Terminal</title>
   <style>
     body, html {
       height: 100%;
@@ -13,17 +12,22 @@
       justify-content: center;
       align-items: center;
       background-color: #1e1e1e;
+      color: #00ff00;
+      font-family: monospace;
     }
     #terminal {
       width: 80%;
       height: 80%;
+      background-color: #000;
+      padding: 20px;
+      border: 2px solid #00ff00;
+      overflow: auto;
+      white-space: pre;
     }
   </style>
 </head>
 <body>
   <div id="terminal"></div>
-  <script src="https://cdn.jsdelivr.net/npm/xterm/lib/xterm.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/xterm-addon-fit/lib/xterm-addon-fit.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
