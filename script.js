@@ -75,23 +75,33 @@ document.addEventListener('DOMContentLoaded', () => {
 +---------------------------+    +-------------------------+
   `;
 
-  function displayAsciiArt(text, delay = 50) {
+  function typeWriterEffect(text, delay = 100, deleteChance = 0.05, retypeDelay = 200) {
     terminal.textContent = '';
     let index = 0;
+    let typing = true;
 
     function writeChar() {
       if (index < text.length) {
-        terminal.textContent += text[index++];
-        setTimeout(writeChar, delay);
+        // Randomly decide whether to delete a character
+        if (Math.random() < deleteChance && typing) {
+          terminal.textContent = terminal.textContent.slice(0, -1);
+          index--;
+          typing = false;
+          setTimeout(writeChar, retypeDelay);
+        } else {
+          terminal.textContent += text[index++];
+          typing = true;
+          setTimeout(writeChar, delay);
+        }
       }
     }
 
     writeChar();
   }
 
-  displayAsciiArt(asciiArt1);
+  typeWriterEffect(asciiArt1, 100, 0.1, 200);
 
   setTimeout(() => {
-    displayAsciiArt(asciiArt2);
-  }, 5000);
+    typeWriterEffect(asciiArt2, 100, 0.1, 200);
+  }, 10000);
 });
