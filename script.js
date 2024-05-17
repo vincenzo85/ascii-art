@@ -39,36 +39,29 @@ document.addEventListener('DOMContentLoaded', () => {
 +---------------------------+    +---------------------------+
   `;
 
+  let typingInterval;
+  let delay = parseInt(speedControl.value, 10);
+
   function typeWriterEffect(text, delay) {
+    clearInterval(typingInterval);
     terminal.textContent = '';
     let index = 0;
 
     function writeChar() {
       if (index < text.length) {
         terminal.textContent += text[index++];
-        setTimeout(writeChar, delay);
+      } else {
+        clearInterval(typingInterval);
       }
     }
 
-    writeChar();
+    typingInterval = setInterval(writeChar, delay);
   }
 
-  // Get initial delay from the speed control slider
-  let delay = parseInt(speedControl.value, 10);
-
-  // Update delay whenever the slider value changes
   speedControl.addEventListener('input', (event) => {
     delay = parseInt(event.target.value, 10);
+    typeWriterEffect(asciiArt, delay);
   });
 
-  // Function to start typing with the current delay
-  function startTyping() {
-    typeWriterEffect(asciiArt1, delay);
-  }
-
-  // Start typing initially
-  startTyping();
-
-  // Restart typing with updated delay every time the slider changes
-  speedControl.addEventListener('change', startTyping);
-});
+  // Initial typing effect
+  typeWriterEffect(asciiArt, delay);
