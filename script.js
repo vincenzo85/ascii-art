@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
   const terminal = document.getElementById('terminal');
-  const speedControl = document.getElementById('speed-control');
 
   const asciiArt1 = `
            +--------------------------------+
@@ -39,29 +38,22 @@ document.addEventListener('DOMContentLoaded', () => {
 +---------------------------+    +---------------------------+
   `;
 
-  let typingInterval;
-  let delay = parseInt(speedControl.value, 10);
-
-  function typeWriterEffect(text, delay) {
-    clearInterval(typingInterval);
+   function typeWriterEffect(text, delay = 1) {
     terminal.textContent = '';
     let index = 0;
 
     function writeChar() {
       if (index < text.length) {
         terminal.textContent += text[index++];
-      } else {
-        clearInterval(typingInterval);
+        setTimeout(writeChar, delay);
       }
     }
 
-    typingInterval = setInterval(writeChar, delay);
+    writeChar();
   }
 
-  speedControl.addEventListener('input', (event) => {
-    delay = parseInt(event.target.value, 10);
-    typeWriterEffect(asciiArt, delay);
-  });
-
+  // Set the typing speed delay to 10ms for a very fast typing effect
+  typeWriterEffect(asciiArt, 10);
+});
   // Initial typing effect
   typeWriterEffect(asciiArt, delay);
