@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const terminal = document.getElementById('terminal');
-
-  const asciiArt1 = `
+  
+  const asciiArt = `
            +--------------------------------+
            | Apprendimento a lungo termine  |
            +---------------+----------------+
@@ -38,7 +38,8 @@ document.addEventListener('DOMContentLoaded', () => {
 +---------------------------+    +---------------------------+
   `;
 
-   function typeWriterEffect(text, delay = 1) {
+
+  function typeWriterEffect(text, delay = 10) {
     terminal.textContent = '';
     let index = 0;
 
@@ -55,6 +56,5 @@ document.addEventListener('DOMContentLoaded', () => {
   // Set the typing speed delay to 10ms for a very fast typing effect
   typeWriterEffect(asciiArt, 10);
 });
-  // Initial typing effect
-  typeWriterEffect(asciiArt, delay);
-});
+
+
