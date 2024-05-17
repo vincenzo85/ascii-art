@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   const terminal = document.getElementById('terminal');
+  const speedControl = document.getElementById('speed-control');
 
   const asciiArt1 = `
            +-----------------------------+
@@ -38,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
 +---------------------------+    +-------------------------+
   `;
 
-  function typeWriterEffect(text, delay = 100) {
+  function typeWriterEffect(text, delay) {
     terminal.textContent = '';
     let index = 0;
 
@@ -52,5 +53,22 @@ document.addEventListener('DOMContentLoaded', () => {
     writeChar();
   }
 
-  typeWriterEffect(asciiArt1, 100);
+  // Get initial delay from the speed control slider
+  let delay = parseInt(speedControl.value, 10);
+
+  // Update delay whenever the slider value changes
+  speedControl.addEventListener('input', (event) => {
+    delay = parseInt(event.target.value, 10);
+  });
+
+  // Function to start typing with the current delay
+  function startTyping() {
+    typeWriterEffect(asciiArt1, delay);
+  }
+
+  // Start typing initially
+  startTyping();
+
+  // Restart typing with updated delay every time the slider changes
+  speedControl.addEventListener('change', startTyping);
 });
